@@ -1,8 +1,6 @@
 """
 2.2 Pair-Level Interaction Construction.
 
-This module constructs atom-residue pair tokens and applies global conditional
-modulation, corresponding to Section 2.2 of the manuscript.
 """
 
 from __future__ import annotations
