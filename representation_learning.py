@@ -1,15 +1,6 @@
 """
 2.1 Pre-trained Representation Learning for Drugs and Proteins.
 
-This module corresponds to Section 2.1 of the manuscript. It produces:
-    - drug local atom-level representations
-    - protein local residue-level representations
-    - drug global representation
-    - protein global representation
-
-For a lightweight public release, the protein encoder is implemented as an
-embedding + CNN encoder. In formal reproduction, this class can be replaced or
-extended with ESM-2 features while keeping the output interface unchanged.
 """
 
 from __future__ import annotations
@@ -70,7 +61,6 @@ class ProteinSequenceEncoder(nn.Module):
         x = self.proj(x)
         residual = x
         x = self.conv(x.transpose(1, 2)).transpose(1, 2)
-        x = self.norm(x + residual)
         x = x * seq_mask.unsqueeze(-1)
         return x
 
@@ -88,8 +78,6 @@ class PCIMRepresentationLearning(nn.Module):
         )
         self.protein_encoder = ProteinSequenceEncoder(
             vocab_size=config.protein_vocab_size,
-            embed_dim=config.protein_embed_dim,
-            hidden_dim=config.hidden_dim,
             dropout=config.dropout,
         )
         self.drug_projection = nn.Linear(config.hidden_dim, config.hidden_dim)
