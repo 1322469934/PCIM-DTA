@@ -1,8 +1,6 @@
 """
 2.4 Global Aggregation and Affinity Prediction.
 
-This module performs condition-aware global aggregation over pair-level tokens
-and predicts the final drug-target affinity value.
 """
 
 from __future__ import annotations
