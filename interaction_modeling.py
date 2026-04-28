@@ -1,8 +1,6 @@
 """
 2.3 Pair-Level Interaction Modeling.
 
-This module treats pair-level interaction tokens as graph nodes and performs
-condition-aware message passing through attention.
 """
 
 from __future__ import annotations
